@@ -17,7 +17,7 @@ class CreateBooksTable extends Migration
             $table->unsignedBigInteger('id', false)->primary();
             $table->unsignedBigInteger('author_id');
             $table->string('title');
-            $table->string('description', 10000);
+            $table->string('description', 15000);
             $table->decimal('rating', 5, 2);
             $table->decimal('price', 5, 2);
             $table->timestamps();

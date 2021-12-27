@@ -14,7 +14,7 @@ class ReduceLongStringColumnsLength extends Migration
     public function up()
     {
         Schema::table('books', function (Blueprint $table) {
-            $table->string('description', 1000)->change(); 
+            $table->string('description', 10000)->change(); 
         });
     }
 
