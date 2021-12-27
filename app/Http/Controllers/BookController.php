@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BookController extends Controller
 {
@@ -25,7 +26,14 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $id = 1;
+        $book = Book::find(DB::table('books')->max('id'));
+        if ($book != null) {
+            $id = $book->id + 1;
+        }
+        $newBook = Book::create($request->all() + ['id' => $id]);
+        $newBook->id = $id;
+        return $newBook;
     }
 
     /**
