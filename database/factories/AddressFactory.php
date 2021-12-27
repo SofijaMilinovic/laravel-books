@@ -2,10 +2,9 @@
 
 namespace Database\Factories;
 
-use App\Models\Book;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class BookFactory extends Factory
+class AddressFactory extends Factory
 {
     /**
      * Define the model's default state.
