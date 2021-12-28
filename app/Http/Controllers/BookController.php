@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\Author;
+use App\Models\Address;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -15,7 +17,11 @@ class BookController extends Controller
      */
     public function index()
     {
-        return Book::all();
+        $books = Book::all();
+        collect($books)->each(function ($book) {
+            $this->addAuthor($book);
+        });
+        return $books;
     }
 
     /**
@@ -51,7 +57,13 @@ class BookController extends Controller
      */
     public function show($id)
     {
-        return Book::find($id);
+        $book = Book::find($id);
+        if ($book == null) {
+            return response(['error' => true, 'error-msg' => 'Book not found'], 404);
+        }
+
+        $this->addAuthor($book);
+        return $book;
     }
 
     /**
@@ -95,6 +107,25 @@ class BookController extends Controller
      */
     public function search($title)
     {
-        return Book::where('title', 'like', '%'.$title.'%')->get();
+        $books = Book::where('title', 'like', '%' . $title . '%')->get();
+        collect($books)->each(function ($book) {
+            $this->addAuthor($book);
+        });
+        return $books;
+    }
+
+    private function addAuthor($book)
+    {
+        $author = Author::find($book->author_id);
+        $this->addAddress($author);
+        unset($book['author_id']);
+        $book->author = $author;
+    }
+
+    private function addAddress($author)
+    {
+        $address = Address::find($author->address_id);
+        unset($author['address_id']);
+        $author->address = $address;
     }
 }
