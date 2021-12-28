@@ -9,7 +9,13 @@
 			"name": "Get All Books",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
 				"url": {
 					"raw": "http://localhost:8000/api/books",
 					"protocol": "http",
@@ -37,7 +43,7 @@
 					},
 					{
 						"key": "Authorization",
-						"value": "Bearer 2|sC584WHf3iFLfM7lUfAK24BmIWVOHN376Rlj8kV4",
+						"value": "Bearer 1|S8yU1JnFp9s6LAKXNZc30G7q964c0FgL14tdT8Mg",
 						"type": "text"
 					}
 				],
@@ -90,7 +96,13 @@
 			"name": "Find Book",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
 				"url": {
 					"raw": "http://localhost:8000/api/books/2",
 					"protocol": "http",
@@ -116,6 +128,11 @@
 						"key": "Accept",
 						"value": "application/json",
 						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 2|47Tnmdxtf8lkebMNpqQvHZKOsYDeQolqckAMAYpJ",
+						"type": "text"
 					}
 				],
 				"body": {
@@ -123,7 +140,17 @@
 					"urlencoded": [
 						{
 							"key": "price",
-							"value": "100",
+							"value": "50",
+							"type": "text"
+						},
+						{
+							"key": "title",
+							"value": "Hello",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "asdasd",
 							"type": "text"
 						}
 					]
@@ -153,6 +180,11 @@
 						"key": "Accept",
 						"value": "application/json",
 						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 2|47Tnmdxtf8lkebMNpqQvHZKOsYDeQolqckAMAYpJ",
+						"type": "text"
 					}
 				],
 				"url": {
@@ -175,9 +207,15 @@
 			"name": "Search Books By Title",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
 				"url": {
-					"raw": "http://localhost:8000/api/books/search/power",
+					"raw": "http://localhost:8000/api/books/search/new",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -187,7 +225,7 @@
 						"api",
 						"books",
 						"search",
-						"power"
+						"new"
 					]
 				}
 			},
@@ -256,7 +294,7 @@
 					},
 					{
 						"key": "Authorization",
-						"value": "Bearer 1|8LhbA2YCbpu203TMH0XMrnXLl6dSiHCR03lqdLUV",
+						"value": "Bearer 2|47Tnmdxtf8lkebMNpqQvHZKOsYDeQolqckAMAYpJ",
 						"type": "text"
 					}
 				],
